@@ -35,6 +35,7 @@ public class Home {
                     System.out.println("Total: ");
                     String total = read.nextLine();
                     System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor + "|$" + total);
+                case 2:
             }
         }
     }
