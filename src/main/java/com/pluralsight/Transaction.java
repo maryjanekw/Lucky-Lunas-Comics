@@ -61,8 +61,9 @@ public class Transaction {
     public void setTotal(double total) {
         this.total = total;
     }
-    public String addTransaction(LocalDate date, LocalTime time, String description, String vendor, double total){
-        return date + "|" + time + "|" + description + "|" +vendor + "|" + total;
 
+    public Object addTransaction(LocalDate date, LocalTime time, String description, String vendor,
+                                             double total){
+        return date + "|" + time + "|" + description + "|" +vendor + "|" + total;
     }
 }

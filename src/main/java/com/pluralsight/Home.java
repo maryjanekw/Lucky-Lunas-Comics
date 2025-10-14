@@ -7,7 +7,7 @@ public class Home {
     public static void showHome(){
         Scanner read = new Scanner(System.in);
         Ledger list = new Ledger();
-     //   list.loadFromCvs("transactions.csv");
+ //       list.loadFromCvs("transactions.csv");
         boolean running = true;
 
         while(running){
@@ -34,8 +34,33 @@ public class Home {
                     String vendor = read.nextLine();
                     System.out.println("Total: ");
                     String total = read.nextLine();
-                    System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor + "|$" + total);
+                    System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
+                            + "|$" + total);
+                    break;
                 case 2:
+                    System.out.println("Enter your transaction.");
+                    System.out.println("Date: ");
+                    date = read.nextLine();
+                    System.out.println("Time: ");
+                    time = read.nextLine();
+                    System.out.println("Item description: ");
+                    description = read.nextLine();
+                    System.out.println("Vendor: ");
+                    vendor = read.nextLine();
+                    System.out.println("Total: ");
+                    total = read.nextLine();
+                    System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
+                            + "|-$" + total);
+                    break;
+                case 3:
+                    Ledger.showLedger();
+                    break;
+                case 4:
+                    running = false;
+                    System.out.println(" Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
             }
         }
     }
