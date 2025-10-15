@@ -9,16 +9,15 @@ import java.util.List;
 public class TransactionList {
 
     private String fileName;
-    private List<Transaction> transactions;
+    private final List<Transaction> transaction;
 
-    public void TransactionList(){
-        transactions = new ArrayList<>();
+    public TransactionList(){
+        transaction = new ArrayList<>();
     }
-    private final List<Transaction> transaction = new ArrayList<>();
 
-    public String Transaction(String s, String s1, String trim, String description, String vendor, double total) {
-        return s;
-    }
+//    public void Transaction(String s, String s1, String trim, String description, String vendor, double total) {
+//        return;
+//    }
 
     public void  displayAll() {
         if (transaction.isEmpty()) {
@@ -38,7 +37,7 @@ public class TransactionList {
 
     public void addDeposit(LocalDate date, LocalTime time, String description, String vendor, double total) {
         if (findTransaction(description, date) != null) {
-            System.out.println("Transaction already exist: " + transaction);
+            System.out.println("Transaction already exist: " + transaction + "\n");
             return;
         }
         transaction.add(new Transaction(date, time, description,vendor,total));
@@ -47,30 +46,28 @@ public class TransactionList {
 
     public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor, double total) {
         if (findTransaction(description, date) != null) {
-            System.out.println("Transaction already exist: " + transaction);
+            System.out.println("Transaction already exist: " + transaction + "\n");
             return;
         }
         transaction.add(new Transaction(date, time, description,vendor,total));
         System.out.println("Transaction added: " + date + "|" + time + "|" + description + "|" + vendor + "|-$" + total);
     }
 
-    public void saveTransaction(String fileName, Transaction[] transactions) {
+    public void saveTransaction(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.csv"))) {
-            for (Transaction transaction : transactions);
-            Transaction transaction = null;
-            writer.write(transaction.getDate() + "|" + transaction.getTime() + "|" +
-                    transaction.getDescription() + "|" +transaction.getVendor() + "|$" + transaction.getTotal());
+            for (Transaction t : transaction);
+            writer.write(transaction + "\n");
         } catch (IOException e) { e.printStackTrace(); }
     }
 
     public void loadTransaction(String fileName){
-        transactions.clear();
+        transaction.clear();
         try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while((line = reader.readLine()) != null){
                 String[] part = line.split("|", 5);
-                if(part.length == 5) {
-                    transactions.add(new Transaction(part[0], part[1], part[2], part[3], part[4],
+                if(part.length == 6) {
+                    transaction.add(new Transaction(part[0], part[1], part[2], part[3], part[4],
                             Double.parseDouble(part[5])));
                 } else {
                 }

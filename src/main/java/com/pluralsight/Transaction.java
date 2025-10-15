@@ -15,7 +15,12 @@ public class Transaction {
     public Transaction(String s, String s1, String s2, String s3, String s4, double v) {
     }
 
-    public Transaction(LocalDate date, LocalTime time, String trim, String vendor, double total) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double total) {
+        this.date = date;
+        this.time = time;
+        this.description = description;
+        this.vendor = vendor;
+        this.total = total;
     }
 
     public LocalDate getDate() {
@@ -56,6 +61,11 @@ public class Transaction {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return date + "|" + time + "|" + description + "|" + vendor + "|$" + total + "\n";
     }
 }
 
