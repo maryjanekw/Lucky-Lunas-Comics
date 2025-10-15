@@ -9,7 +9,7 @@ public class Home {
     public static void showHome(){
         Scanner read = new Scanner(System.in);
         Ledger list = new Ledger();
- //       list.loadFromCvs("transactions.csv");
+        list.loadFromCvs("transactions.csv");
         boolean running = true;
 
         while(running){
@@ -65,9 +65,9 @@ public class Home {
                     System.out.println("Invalid choice. Try again.");
             }
 
-            private static void addDeposit(Transaction list, Scanner read){
+         // private static void addDeposit(Transaction list, Scanner read){
 
-            }
+
         }
     }
 }

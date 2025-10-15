@@ -21,11 +21,7 @@ public class Transaction {
         this.total = total;
     }
 
-    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double total) {
-    }
-
-    public Transaction(String s, String s1, String trim, String description, String vendor, double total) {
-
+    public Transaction(LocalDate date, LocalTime time, String trim, String vendor, double total) {
     }
 
     public LocalDate getDate() {
@@ -68,11 +64,21 @@ public class Transaction {
         this.total = total;
     }
 
-//    public String addDeposit(LocalDate date, LocalTime time, String description, String vendor, double total){
-//        return date + "|" + time + "|" + description + "|" +vendor + "|$" + total;
-//    }
-//
-//    public String addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor, double total){
-//        return date + "|" + time + "|" + description + "|" + vendor + "|-$" + total;
-//    }
+    public void addDeposit(LocalDate date, LocalTime time, String description, String vendor, double total){
+        if(findTransaction(description, date) != null) {
+            System.out.println("Transaction already exist: " + transaction);
+            return;
+        }
+        transaction.add(new Transaction(date, time, description.trim(), vendor, total));
+        System.out.println("Transaction added: " + date + "|" + time + "|" + description + "|" + vendor + "|$" + total);
+    }
+
+    public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor, double total){
+        if(findTransaction(description, date) != null) {
+            System.out.println("Transaction already exist: " + transaction);
+            return;
+        }
+        transaction.add(new Transaction(date, time, description.trim(), vendor, total));
+        System.out.println("Transaction added: " + date + "|" + time + "|" + description + "|" + vendor + "|-$" + total);
+    }
 }

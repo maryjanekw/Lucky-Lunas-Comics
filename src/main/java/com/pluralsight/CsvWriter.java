@@ -13,7 +13,7 @@ public class CsvWriter {
     }
 
     public void saveToCsv(String fileName, Transaction[] transactions) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transactions.csv"))) {
             for (Transaction transaction : transactions);
             Transaction transaction = null;
             writer.write(transaction.getDate() + "|" + transaction.getTime() + "|" +
@@ -23,7 +23,7 @@ public class CsvWriter {
 
     public void loadFromCsv(String fileName){
         transactions.clear();
-        try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+        try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while((line = reader.readLine()) != null){
                 String[] part = line.split("|", 4);
