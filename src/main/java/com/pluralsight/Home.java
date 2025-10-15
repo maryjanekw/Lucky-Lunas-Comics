@@ -8,8 +8,8 @@ public class Home {
 
     public static void showHome() {
         Scanner read = new Scanner(System.in);
-        Ledger list = new Ledger();
-        list.loadFromCvs("transactions.csv");
+        TransactionList list = new TransactionList();
+        list.loadTransaction("transactions.csv");
         boolean running = true;
 
         while (running) {
@@ -44,7 +44,7 @@ public class Home {
         }
     }
 
-    private static void addDeposit(Ledger list, Scanner read) {
+    private static void addDeposit(TransactionList list, Scanner read) {
         System.out.println("Enter your transaction.");
         System.out.println("Date: ");
         LocalDate date = LocalDate.parse(read.nextLine());
@@ -60,7 +60,7 @@ public class Home {
                 + "|$" + total);
     }
 
-    private static void addDebitedTransactions(Ledger list, Scanner read){
+    private static void addDebitedTransactions(TransactionList list, Scanner read){
         System.out.println("Enter your transaction.");
         System.out.println("Date: ");
         LocalDate date = LocalDate.parse(read.nextLine());
