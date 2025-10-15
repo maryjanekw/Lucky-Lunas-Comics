@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Home {
@@ -25,30 +27,30 @@ public class Home {
                 case 1:
                     System.out.println("Enter your transaction.");
                     System.out.println("Date: ");
-                    String date = read.nextLine();
+                    LocalDate date = LocalDate.parse(read.nextLine());
                     System.out.println("Time: ");
-                    String time = read.nextLine();
+                    LocalTime time = LocalTime.parse(read.nextLine());
                     System.out.println("Item description: ");
                     String description = read.nextLine();
                     System.out.println("Vendor: ");
                     String vendor = read.nextLine();
                     System.out.println("Total: ");
-                    String total = read.nextLine();
+                    double total = read.nextDouble();
                     System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
                             + "|$" + total);
                     break;
                 case 2:
                     System.out.println("Enter your transaction.");
                     System.out.println("Date: ");
-                    date = read.nextLine();
+                    date = LocalDate.parse(read.nextLine());
                     System.out.println("Time: ");
-                    time = read.nextLine();
+                    time = LocalTime.parse(read.nextLine());
                     System.out.println("Item description: ");
                     description = read.nextLine();
                     System.out.println("Vendor: ");
                     vendor = read.nextLine();
                     System.out.println("Total: ");
-                    total = read.nextLine();
+                    total = read.nextDouble();
                     System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
                             + "|-$" + total);
                     break;
@@ -61,6 +63,10 @@ public class Home {
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
+            }
+
+            private static void addDeposit(Transaction list, Scanner read){
+
             }
         }
     }

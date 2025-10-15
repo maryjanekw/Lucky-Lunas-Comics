@@ -2,6 +2,8 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Transaction {
     private LocalDate date;
@@ -10,6 +12,7 @@ public class Transaction {
     private String vendor;
     private double total;
 
+    private final List<Transaction> transaction = new ArrayList<>();
     public Transaction(LocalDate date, LocalTime time, String trim, String description, String vendor, double total) {
         this.date = date;
         this.time = time;
@@ -18,7 +21,10 @@ public class Transaction {
         this.total = total;
     }
 
-    public Transaction(LocalDate date, LocalTime time, String trim, String vendor, double total) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double total) {
+    }
+
+    public Transaction(String s, String s1, String trim, String description, String vendor, double total) {
 
     }
 
@@ -62,8 +68,11 @@ public class Transaction {
         this.total = total;
     }
 
-    public Object addTransaction(LocalDate date, LocalTime time, String description, String vendor,
-                                             double total){
-        return date + "|" + time + "|" + description + "|" +vendor + "|" + total;
-    }
+//    public String addDeposit(LocalDate date, LocalTime time, String description, String vendor, double total){
+//        return date + "|" + time + "|" + description + "|" +vendor + "|$" + total;
+//    }
+//
+//    public String addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor, double total){
+//        return date + "|" + time + "|" + description + "|" + vendor + "|-$" + total;
+//    }
 }
