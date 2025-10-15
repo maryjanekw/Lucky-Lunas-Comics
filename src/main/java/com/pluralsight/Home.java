@@ -58,25 +58,25 @@ public class Home {
         double total = read.nextDouble();
         System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
                 + "|$" + total);
-        list.addDeposit(date,time, description, vendor,total);
+        list.addDeposit(date,time, description, vendor, total);
         list.saveTransaction("transactions.csv");
     }
 
     private static void addDebitedTransactions(TransactionList list, Scanner read){
         System.out.println("Enter your transaction.");
-        System.out.println("Date: ");
+//        System.out.println("Date: ");
         LocalDate date = LocalDate.now();
-        System.out.println("Time: ");
+//        System.out.println("Time: ");
         LocalTime time = LocalTime.now();
         System.out.println("Item description: ");
         String description = read.nextLine();
         System.out.println("Vendor: ");
         String vendor = read.nextLine();
         System.out.println("Total: ");
-        Double total = read.nextDouble();
+        double total = read.nextDouble();
         System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" + vendor
                 + "|-$" + total);
-        list.addDebitedTransaction(date, time, description, vendor,total);
+        list.addDebitedTransaction(date, time, description, vendor, total);
         list.saveTransaction("transactions.csv");
     }
 }

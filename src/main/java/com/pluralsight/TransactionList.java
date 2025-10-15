@@ -15,11 +15,7 @@ public class TransactionList {
         transaction = new ArrayList<>();
     }
 
-//    public void Transaction(String s, String s1, String trim, String description, String vendor, double total) {
-//        return;
-//    }
-
-    public void  displayAll() {
+    public void displayAll() {
         if (transaction.isEmpty()) {
             transaction.forEach(System.out::println);
         } else {
@@ -65,7 +61,7 @@ public class TransactionList {
         try(BufferedReader reader = new BufferedReader(new FileReader("transactions.csv"))){
             String line;
             while((line = reader.readLine()) != null){
-                String[] part = line.split("|", 5);
+                String[] part = line.split("|", 6);
                 if(part.length == 6) {
                     transaction.add(new Transaction(part[0], part[1], part[2], part[3], part[4],
                             Double.parseDouble(part[5])));

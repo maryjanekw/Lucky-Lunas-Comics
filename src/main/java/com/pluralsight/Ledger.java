@@ -28,6 +28,7 @@ public class Ledger {
 
             switch (choice) {
                 case 1: //display all transactions
+                    list.displayAll();
                     break;
                 case 2: //display deposited transactions only
                     break;
@@ -42,5 +43,8 @@ public class Ledger {
                     System.out.println("Invalid choice. Try again.");
             }
         }
+    }
+
+    private void displayAll() {
     }
 }
