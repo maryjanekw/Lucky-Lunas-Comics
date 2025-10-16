@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class Ledger {
 
-    public void loadFromCvs(String fileName) {
+    public void loadTransaction(String fileName) {
     }
 
     public static void showLedger() {
         Scanner read = new Scanner(System.in);
         Ledger list = new Ledger();
-        list.loadFromCvs("transactions.csv");
+        list.loadTransaction("transactions.csv");
+
         boolean running = true;
 
         while (running) {

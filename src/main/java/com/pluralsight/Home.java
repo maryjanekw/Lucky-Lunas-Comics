@@ -56,9 +56,9 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
-                + "|$" + total);
-        list.addDeposit(date,time, description, vendor, total);
+//        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
+//                + "|$" + total);
+        list.addDeposit(date,time, description, vendor,"$" ,total);
         list.saveTransaction("transactions.csv");
     }
 
@@ -74,9 +74,9 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" + vendor
-                + "|-$" + total);
-        list.addDebitedTransaction(date, time, description, vendor, total);
+//        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" + vendor
+//                + "|-$" + total);
+        list.addDebitedTransaction(date, time, description, vendor, "-$", total);
         list.saveTransaction("transactions.csv");
     }
 }
