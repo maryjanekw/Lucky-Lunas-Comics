@@ -10,20 +10,13 @@ public class Transaction {
     private String description;
     private String vendor;
     private double total;
-    private String type;
 
-    private String Transaction;
-
-    public Transaction(String s, String s1, String s2, String s3, String s4, String s5, double v) {
-    }
-
-    public Transaction(LocalDate date, LocalTime time, String description, String vendor, String type,double total) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, double total) {
         this.date = date;
         this.time = time;
         this.description = description;
         this.vendor = vendor;
         this.total = total;
-        this.type = type;
     }
 
     public LocalDate getDate() {
@@ -46,14 +39,10 @@ public class Transaction {
         return total;
     }
 
-    public String getType() {
-        return type;
-    }
-
     @Override
     public String toString() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + type + total;
+        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + total;
     }
 
 }

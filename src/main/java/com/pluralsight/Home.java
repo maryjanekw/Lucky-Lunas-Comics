@@ -8,7 +8,6 @@ public class Home {
 
     public static void showHome() {
         Scanner read = new Scanner(System.in);
-        Ledger ledger = new Ledger();
         TransactionList list = new TransactionList();
         list.loadTransaction("transactions.csv");
 
@@ -27,16 +26,16 @@ public class Home {
             read.nextLine();
 
             switch (choice) {
-                case 1:
+                case 1: //add Customer Transaction
                     addDeposit(list, read);
                     break;
-                case 2:
+                case 2: //add transactions using store money
                     addDebitedTransactions(list, read);
                     break;
-                case 3:
+                case 3: //go to the ledger
                     Ledger.showLedger();
                     break;
-                case 4:
+                case 4: //exit
                     System.out.println(" Goodbye!");
                     running = false;
                     break;
@@ -56,7 +55,7 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        list.addDeposit(date,time, description, vendor,"$" ,total);
+        list.addDeposit(date,time, description, vendor,total);
         list.saveTransaction("transactions.csv");
     }
 
@@ -70,7 +69,7 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        list.addDebitedTransaction(date, time, description, vendor, "-$", total);
+        list.addDebitedTransaction(date, time, description, vendor, total);
         list.saveTransaction("transactions.csv");
     }
 }

@@ -2,6 +2,7 @@ package com.pluralsight;
 
 
 import java.util.Scanner;
+import java.io.*;
 
 public class Ledger {
 
@@ -10,7 +11,7 @@ public class Ledger {
 
     public static void showLedger() {
         Scanner read = new Scanner(System.in);
-        Ledger list = new Ledger();
+        TransactionList list = new TransactionList();
         list.loadTransaction("transactions.csv");
 
         boolean inLedger = true;
@@ -19,8 +20,8 @@ public class Ledger {
             System.out.println("\n Welcome to your Ledger!");
             System.out.println("1. View all Transactions");
             System.out.println("2. View all Deposited Transactions");
-            System.out.println("3. View al Debited Transactions");
-            System.out.println("4. View Repots");
+            System.out.println("3. View all Debited Transactions");
+            System.out.println("4. View Reports");
             System.out.println("5. Back to Home");
             System.out.println("What would you like to do: ");
 
@@ -44,8 +45,5 @@ public class Ledger {
                     System.out.println("Invalid choice. Try again.");
             }
         }
-    }
-
-    private void displayAll() {
     }
 }
