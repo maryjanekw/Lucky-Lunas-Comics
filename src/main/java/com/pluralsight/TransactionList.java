@@ -15,7 +15,7 @@ public class TransactionList {
 
 
     public void displayAll() {
-        if (transaction.isEmpty()) {
+        if (!transaction.isEmpty()) {
             transaction.forEach(System.out::println);
         } else {
             System.out.println("Your transaction list is empty.");
@@ -56,6 +56,7 @@ public class TransactionList {
                 writer.write(transaction.toString());
                 writer.newLine();
             }
+            newTransaction.clear();
             System.out.println("Transaction saved to " + fileName);
         } catch (IOException e) {
             e.printStackTrace(); }
