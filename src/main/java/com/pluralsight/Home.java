@@ -9,7 +9,7 @@ public class Home {
     public static void showHome() {
         Scanner read = new Scanner(System.in);
         TransactionList list = new TransactionList();
-        list.loadTransaction("transactions.csv");
+//        list.loadTransaction("transactions.csv");
 
         boolean running = true;
 

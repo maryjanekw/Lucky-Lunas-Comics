@@ -19,6 +19,9 @@ public class Transaction {
         this.total = total;
     }
 
+    public Transaction(String s, String s1, String description, String vendor, double total) {
+    }
+
     public LocalDate getDate() {
         return date;
     }
