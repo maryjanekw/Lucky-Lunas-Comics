@@ -8,8 +8,10 @@ public class Home {
 
     public static void showHome() {
         Scanner read = new Scanner(System.in);
+        Ledger ledger = new Ledger();
         TransactionList list = new TransactionList();
         list.loadTransaction("transactions.csv");
+
         boolean running = true;
 
         while (running) {
@@ -35,8 +37,8 @@ public class Home {
                     Ledger.showLedger();
                     break;
                 case 4:
-                    running = false;
                     System.out.println(" Goodbye!");
+                    running = false;
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
@@ -46,9 +48,7 @@ public class Home {
 
     private static void addDeposit(TransactionList list, Scanner read) {
         System.out.println("Enter your transaction.");
-//        System.out.println("Date: ");
         LocalDate date = LocalDate.now();
-//        System.out.println("Time: ");
         LocalTime time = LocalTime.now();
         System.out.println("Item description: ");
         String description = read.nextLine();
@@ -56,17 +56,13 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-//        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" +vendor
-//                + "|$" + total);
         list.addDeposit(date,time, description, vendor,"$" ,total);
         list.saveTransaction("transactions.csv");
     }
 
     private static void addDebitedTransactions(TransactionList list, Scanner read){
         System.out.println("Enter your transaction.");
-//        System.out.println("Date: ");
         LocalDate date = LocalDate.now();
-//        System.out.println("Time: ");
         LocalTime time = LocalTime.now();
         System.out.println("Item description: ");
         String description = read.nextLine();
@@ -74,8 +70,6 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-//        System.out.println("Added Transaction: " + date + "|" + time + "|" + description + "|" + vendor
-//                + "|-$" + total);
         list.addDebitedTransaction(date, time, description, vendor, "-$", total);
         list.saveTransaction("transactions.csv");
     }

@@ -13,9 +13,9 @@ public class Ledger {
         Ledger list = new Ledger();
         list.loadTransaction("transactions.csv");
 
-        boolean running = true;
+        boolean inLedger = true;
 
-        while (running) {
+        while (inLedger) {
             System.out.println("\n Welcome to your Ledger!");
             System.out.println("1. View all Transactions");
             System.out.println("2. View all Deposited Transactions");
@@ -38,7 +38,7 @@ public class Ledger {
                 case 4: // customized search
                     break;
                 case 5: //back to home
-                    Home.showHome();
+                    inLedger = false;
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
