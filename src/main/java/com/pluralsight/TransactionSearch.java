@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -42,7 +43,7 @@ public class TransactionSearch {
 
     }
 
-    // Shortcut method for date range search
+    // Shortcut Method for Date Range search
     public static void showTransactionDateRange(TransactionList list, LocalDate start, LocalDate end,
                                                 String title){
         List<Transaction> transactions = list.getTransactions();
@@ -64,7 +65,7 @@ public class TransactionSearch {
     }
 
 
-    //search by specific date
+    // Search by Specific Date
     public static void findDate(TransactionList list){
         Scanner read = new Scanner(System.in);
 
@@ -90,7 +91,7 @@ public class TransactionSearch {
         }
     }
 
-    //search by vendor
+    // Search by Vendor
     public static void findVendor(TransactionList list) {
         Scanner read = new Scanner(System.in);
 
@@ -112,4 +113,59 @@ public class TransactionSearch {
             System.out.println("Vendor not found: " + vendorInput);
         }
     }
+
+    // Search by Exact Total
+    public static void findExactTotal(TransactionList list) {
+        Scanner read = new Scanner(System.in);
+
+        System.out.println("Enter the total you would like to find: ");
+        String input = read.nextLine().trim();
+//        System.out.println("Is this a search for Deposit, Debit, or All?: ");
+//        String type = read.nextLine();
+
+        try {
+            BigDecimal target = parseAmountInput(input);
+            boolean found = false;
+
+            TransactionFormatter.printHeader();
+            for (Transaction t : list.getTransactions()) {
+                if(bd(t).compareTo(target) == 0){
+                    TransactionFormatter.printRow(t);
+                    found = true;
+                }
+            }
+        if (!found) {
+            System.out.println("No transaction found for: " + target);
+        }
+    }catch(NumberFormatException a){
+            System.out.println("Invalid amount. Try again.");
+        }
+    }
+
+    // Search Total by Range
+    public static void findTotalRange(TransactionList list){
+
+    }
+
+    // Helper Method for search Total
+    private static BigDecimal parseAmountInput(String raw) throws NumberFormatException{
+        if(raw == null) throw new NumberFormatException("null input");
+        String s = raw.trim();
+        if(s.startsWith("-$")){
+            s = "-" + s.substring(2);
+        } else if (s.startsWith("$")) {
+            s = s.substring(1);
+        }
+        s = s.replace(",", ""); // for total > 100 (ex. 1,000)
+        return  new BigDecimal(s);
+    }
+    private static BigDecimal bd(Transaction t){
+        return BigDecimal.valueOf(t.getTotal());
+    }
+
+    // Search by Keywords
+    public static void findKeyword(TransactionList list){
+
+    }
+
 }

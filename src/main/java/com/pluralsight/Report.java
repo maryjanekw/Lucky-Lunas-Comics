@@ -12,15 +12,16 @@ public class Report {
         while (inReport){
             System.out.println("\n Welcome to you Report!");
             System.out.println("Choose your custom search.");
-            System.out.println("1. Month to Date");
+            System.out.println("1. Month-to-Date");
             System.out.println("2. Previous Month");
-            System.out.println("3. Year to Date");
+            System.out.println("3. Year-to-Date");
             System.out.println("4. Previous Year");
             System.out.println("5. Search by Date");
             System.out.println("6. Search by Vendor");
-            System.out.println("7. Search by Total");
-            System.out.println("8. Search by Keywords");
-            System.out.println("9. Back to Ledger");
+            System.out.println("7. Search by Exact Total");
+            System.out.println("8. Search by Ranged Total");
+            System.out.println("9. Search by Keywords");
+            System.out.println("10. Back to Ledger");
             System.out.println("What would you like to do: ");
 
             int choice = read.nextInt();
@@ -45,11 +46,14 @@ public class Report {
                 case 6: // search by vendor
                     TransactionSearch.findVendor(list);
                     break;
-                case 7: // search by total
+                case 7: // search by exact total
+                    TransactionSearch.findExactTotal(list);
                     break;
-                case 8: // search by keyword
+                case 8: // search by total range
                     break;
-                case 9: //back to ledger
+                case 9: // search by keyword
+                    break;
+                case 10: //back to ledger
                     inReport = false;
                     break;
                 default:
