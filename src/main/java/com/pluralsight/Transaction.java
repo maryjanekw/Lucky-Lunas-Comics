@@ -12,7 +12,7 @@ public class Transaction {
     private String description;
     private String vendor;
     private double total;
-    private String typeAndTotal; // stores the "-$" and "$" in the tota
+    private String typeAndTotal; // stores the "-$" and "$" in the total
 
 
     //constructors

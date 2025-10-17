@@ -23,7 +23,7 @@ public class TransactionList {
                     LocalTime time = LocalTime.parse(part[1].trim());
                     String description = part[2].trim();
                     String vendor = part[3].trim();
-                    String typeAndTotal = part[4].trim();
+                    String typeAndTotal = part[4].trim(); //combine "-$" & "$" with total
                     double total;
                     if(typeAndTotal.startsWith("-$")){
                         total = Double.parseDouble(typeAndTotal.substring(2));
@@ -88,7 +88,7 @@ public class TransactionList {
 
     public void displayDeposits() {
         List<Transaction> deposits = transaction.stream()
-                .filter(t -> "$".equals(t.getTotal())) // deposit String type = "$"
+                .filter(t -> t.getTypeAndTotal().startsWith("$")) // deposit String type = "$"
                 .toList();
         if (deposits.isEmpty()) {
             System.out.println("No deposits found.");
@@ -103,7 +103,7 @@ public class TransactionList {
 
     public void displayDebits(){
         List<Transaction> debits = transaction.stream()
-                .filter(t -> "-$".equals(t.getTotal())) // debit String type = "-$"
+                .filter(t -> t.getTypeAndTotal().startsWith("-$")) // debit String type = "-$"
                 .toList();
         if (debits.isEmpty()) {
             System.out.println("No deposits found.");
