@@ -55,7 +55,8 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        list.addDeposit(date,time, description, vendor, "$", total);
+        String typeAndTotal = "";
+        list.addDeposit(date,time, description, vendor, typeAndTotal, total);
         read.nextLine();
         list.saveTransaction("transactions.csv");
     }
@@ -70,7 +71,8 @@ public class Home {
         String vendor = read.nextLine();
         System.out.println("Total: ");
         double total = read.nextDouble();
-        list.addDebitedTransaction(date, time, description, vendor, "-$",total);
+        String typeAndTotal = "";
+        list.addDebitedTransaction(date, time, description, vendor, typeAndTotal, total);
         list.saveTransaction("transactions.csv");
     }
 }

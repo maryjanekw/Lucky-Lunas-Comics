@@ -11,16 +11,17 @@ public class Transaction {
     private LocalTime time = LocalTime.now();
     private String description;
     private String vendor;
-    private String type;
     private double total;
+    private String typeAndTotal; // stores the "-$" and "$" in the tota
+
 
     //constructors
-    public Transaction(LocalDate date, LocalTime time, String description, String vendor, String type, double total) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, String typeAndTotal,double total) {
         this.date = date;
         this.time = time;
         this.description = description;
         this.vendor = vendor;
-        this.type = type;
+        this.typeAndTotal = typeAndTotal;
         this.total = total;
     }
 
@@ -43,19 +44,17 @@ public class Transaction {
     public String getVendor() {
         return vendor;
     }
-    public String getType(){
-        return type;
-    }
     public double getTotal() {
         return total;
     }
-
+    public String getTypeAndTotal() {return typeAndTotal;}
 
     @Override
     public String toString() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + type + total;
+        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + total;
     }
+
 }
 
 

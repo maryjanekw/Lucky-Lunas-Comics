@@ -12,7 +12,7 @@ public class TransactionList {
     private List<Transaction> transaction = new ArrayList<>();
     private List<Transaction> newTransaction = new ArrayList<>();
 
-
+    //lets you display .csv file
     public void loadTransaction(String fileName){
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -24,12 +24,13 @@ public class TransactionList {
                     String description = part[2].trim();
                     String vendor = part[3].trim();
                     String typeAndTotal = part[4].trim();
-
                     double total;
-                    if(typeAndTotal.startsWith("-$")) {
-                        total = Double.parseDouble(typeAndTotal.substring(2)) * -1;
-                    } else {
+                    if(typeAndTotal.startsWith("-$")){
+                        total = Double.parseDouble(typeAndTotal.substring(2));
+                    } else if (typeAndTotal.startsWith("$")) {
                         total = Double.parseDouble(typeAndTotal.substring(1));
+                    }else{
+                        total = Double.parseDouble(typeAndTotal);
                     }
                     transaction.add(new Transaction(date, time, description, vendor, typeAndTotal, total));
                 }
@@ -42,22 +43,23 @@ public class TransactionList {
         }
     }
 
-    public void addDeposit(LocalDate date, LocalTime time, String description, String vendor, String type,
-                           double total){
-        Transaction t = new Transaction(date, time, description, vendor, type,total);
+    public void addDeposit(LocalDate date, LocalTime time, String description, String vendor,
+                           String typeAndTotal, double total){
+        Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
         transaction.add(t);
         newTransaction.add(t);
         System.out.println("Transaction added: " + t);
     }
 
-    public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor, String type,
-                                      double total) {
-        Transaction t = new Transaction(date, time, description, vendor, type, total);
+    public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor,
+                                      String typeAndTotal, double total) {
+        Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
         transaction.add(t);
         newTransaction.add(t);
         System.out.println("Transaction added: " + t);
     }
 
+    // save to .csv file
     public void saveTransaction(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             for (Transaction t : newTransaction) {
@@ -71,6 +73,7 @@ public class TransactionList {
         }
     }
 
+    //display functions
     public void displayAll() {
         if (transaction.isEmpty()) {
             System.out.println("No transactions found.");
@@ -83,10 +86,9 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
-    // Deposit String type = "$"
     public void displayDeposits() {
         List<Transaction> deposits = transaction.stream()
-                .filter(t -> "$".equals(t.getType()))
+                .filter(t -> "$".equals(t.getTotal())) // deposit String type = "$"
                 .toList();
         if (deposits.isEmpty()) {
             System.out.println("No deposits found.");
@@ -99,10 +101,9 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
-    // Debit String type = "-$"
     public void displayDebits(){
         List<Transaction> debits = transaction.stream()
-                .filter(t -> "-$".equals(t.getType()))
+                .filter(t -> "-$".equals(t.getTotal())) // debit String type = "-$"
                 .toList();
         if (debits.isEmpty()) {
             System.out.println("No deposits found.");
