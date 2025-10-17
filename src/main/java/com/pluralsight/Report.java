@@ -50,6 +50,7 @@ public class Report {
                     TransactionSearch.findExactTotal(list);
                     break;
                 case 8: // search by total range
+                    TransactionSearch.findByRange(list);
                     break;
                 case 9: // search by keyword
                     break;

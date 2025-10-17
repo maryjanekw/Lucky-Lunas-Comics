@@ -143,8 +143,40 @@ public class TransactionSearch {
     }
 
     // Search Total by Range
-    public static void findTotalRange(TransactionList list){
+    public static void findByRange(TransactionList list) {
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("Enter first amount: ");
+        String firstRaw = sc.nextLine().trim();
+        System.out.print("Enter second amount: ");
+        String secondRaw = sc.nextLine().trim();
+//        System.out.println("How would you like to sort the totals? (Max -> Min or Min -> Max)");
+//        System.out.println("Enter Min or Max: ");
+//        String input = read.nextLine().trim();
+
+        try {
+            BigDecimal first = parseAmountInput(firstRaw);
+            BigDecimal second = parseAmountInput(secondRaw);
+
+            // Guarantee min is the smallest total
+            BigDecimal min = first.min(second);
+            BigDecimal max = first.max(second);
+
+            boolean found = false;
+            TransactionFormatter.printHeader();
+            for (Transaction t : list.getTransactions()) {
+                BigDecimal amt = bd(t);
+                if (amt.compareTo(min) >= 0 && amt.compareTo(max) <= 0) {
+                    TransactionFormatter.printRow(t);
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("No transactions found between " + min + " and " + max);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Try again.");
+        }
     }
 
     // Helper Method for search Total
