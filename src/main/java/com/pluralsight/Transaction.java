@@ -52,7 +52,7 @@ public class Transaction {
     @Override
     public String toString() {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + total;
+        return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + typeAndTotal + total;
     }
 
 }

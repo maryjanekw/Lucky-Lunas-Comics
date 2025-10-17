@@ -44,7 +44,7 @@ public class TransactionList {
     // Add Deposit to .csv file
     public void addDeposit(LocalDate date, LocalTime time, String description, String vendor,
                            String typeAndTotal, double total){
-        Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
+        Transaction t = new Transaction(date, time, description, vendor, "$", total);
         transaction.add(t);
         newTransaction.add(t);
         System.out.println("Transaction added: " + t);
@@ -53,7 +53,7 @@ public class TransactionList {
     // Add Debit to .cvs file
     public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor,
                                       String typeAndTotal, double total) {
-        Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
+        Transaction t = new Transaction(date, time, description, vendor, "-$", total);
         transaction.add(t);
         newTransaction.add(t);
         System.out.println("Transaction added: " + t);
