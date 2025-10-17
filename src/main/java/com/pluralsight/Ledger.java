@@ -10,7 +10,7 @@ public class Ledger {
     public static void showLedger() {
         Scanner read = new Scanner(System.in);
         TransactionList list = new TransactionList();
-
+        list.loadTransaction("transactions.csv");
 
         boolean inLedger = true;
 
@@ -31,8 +31,10 @@ public class Ledger {
                     list.displayAll();
                     break;
                 case 2: //display deposited transactions only
+                    list.displayDeposits();
                     break;
                 case 3: //display all debited transactions only
+                    list.displayDebits();
                     break;
                 case 4: // customized search
                     break;

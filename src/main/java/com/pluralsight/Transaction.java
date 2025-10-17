@@ -15,7 +15,7 @@ public class Transaction {
     private double total;
 
     //constructors
-    public Transaction(LocalDate date, LocalTime time, String description, String vendor, String type,double total) {
+    public Transaction(LocalDate date, LocalTime time, String description, String vendor, String type, double total) {
         this.date = date;
         this.time = time;
         this.description = description;
@@ -25,6 +25,9 @@ public class Transaction {
     }
 
     public Transaction(String s, String s1, String s2, String s3, double v) {
+    }
+
+    public Transaction(String s, String s1, String s2, String s3, String s4) {
     }
 
     //getters
@@ -53,7 +56,6 @@ public class Transaction {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         return date + "|" + time.format(timeFormatter) + "|" + description + "|" + vendor + "|" + type + total;
     }
-
 }
 
 

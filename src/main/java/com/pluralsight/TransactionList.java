@@ -3,24 +3,24 @@ package com.pluralsight;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class TransactionList {
 
     private List<Transaction> transaction = new ArrayList<>();
     private List<Transaction> newTransaction = new ArrayList<>();
 
+
     public void loadTransaction(String fileName){
-//        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 String[] part = line.split("\\|");
                 if (part.length >= 5){
-                    transaction.add(new Transaction(part[0], part[1], part[2], part[3], Double.parseDouble(part[4])));
+                    transaction.add(new Transaction(part[0], part[1], part[2], part[3], part[4]));
                 }
             }
             System.out.println("Transaction loading from " + fileName);
@@ -61,10 +61,47 @@ public class TransactionList {
     }
 
     public void displayAll() {
-        loadTransaction("transactions.csv");
-        for(Transaction t : transaction){
-            System.out.println(t);
+        if (transaction.isEmpty()) {
+            System.out.println("No transactions found.");
+            return;
         }
+        TransactionFormatter.printHeader();
+        for (Transaction t : transaction) {
+            TransactionFormatter.printRow(t);
+        }
+        TransactionFormatter.printFooter();
+    }
+
+    // Deposit String type = "$"
+    public void displayDeposits() {
+        List<Transaction> deposits = transaction.stream()
+                .filter(t -> "$".equals(t.getType()))
+                .toList();
+        if (deposits.isEmpty()) {
+            System.out.println("No deposits found.");
+            return;
+        }
+        TransactionFormatter.printHeader();
+        for (Transaction t : deposits) {
+            TransactionFormatter.printRow(t);
+        }
+        TransactionFormatter.printFooter();
+    }
+
+    // Debit String type = "-$"
+    public void displayDebits(){
+        List<Transaction> debits = transaction.stream()
+                .filter(t -> "-$".equals(t.getType()))
+                .toList();
+        if (debits.isEmpty()) {
+            System.out.println("No deposits found.");
+            return;
+        }
+        TransactionFormatter.printHeader();
+        for (Transaction t : debits) {
+            TransactionFormatter.printRow(t);
+        }
+        TransactionFormatter.printFooter();
     }
 
     public Transaction findTransaction(String description){
@@ -73,5 +110,7 @@ public class TransactionList {
                 .findFirst()
                 .orElse(null);
     }
+
+
 }
 
