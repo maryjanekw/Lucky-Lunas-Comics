@@ -12,7 +12,7 @@ public class TransactionFormatter {
     //transaction header
     public static void printHeader(){
         System.out.println(CYAN + "======================================================================" + RESET);
-        System.out.printf("%-12s %-8s %-20s %-15s %-10s%n",
+        System.out.printf("%-12s %-10s %-35s %-20s %-10s%n",
                 "Date","Time","Description","Vendor","Total");
         System.out.println(CYAN + "======================================================================" + RESET);
     }
@@ -27,7 +27,7 @@ public class TransactionFormatter {
             color = RED;
         }else{
         }
-        System.out.printf(color + "%-12s %-8s %-20s %-15s %-10.2f" + RESET + "%n",
+        System.out.printf(color + "%-12s %-10s %-35s %-20s %-10s" + RESET + "%n",
                 t.getDate(), t.getTime(), t.getDescription(),
                 t.getVendor(), t.getType(), t.getTotal());
     }

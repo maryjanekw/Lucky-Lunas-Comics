@@ -17,10 +17,21 @@ public class TransactionList {
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 String[] part = line.split("\\|");
                 if (part.length >= 5){
-                    transaction.add(new Transaction(part[0], part[1], part[2], part[3], part[4]));
+                    LocalDate date = LocalDate.parse(part[0].trim());
+                    LocalTime time = LocalTime.parse(part[1].trim());
+                    String description = part[2].trim();
+                    String vendor = part[3].trim();
+                    String typeAndTotal = part[4].trim();
+
+                    double total;
+                    if(typeAndTotal.startsWith("-$")) {
+                        total = Double.parseDouble(typeAndTotal.substring(2)) * -1;
+                    } else {
+                        total = Double.parseDouble(typeAndTotal.substring(1));
+                    }
+                    transaction.add(new Transaction(date, time, description, vendor, typeAndTotal, total));
                 }
             }
             System.out.println("Transaction loading from " + fileName);
