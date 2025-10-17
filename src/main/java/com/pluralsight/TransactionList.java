@@ -1,16 +1,14 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.time.*;
+import java.util.*;
 
 public class TransactionList {
 
     private List<Transaction> transaction = new ArrayList<>();
-    private List<Transaction> newTransaction = new ArrayList<>();
+    public List<Transaction> newTransaction = new ArrayList<>();
+
 
     //lets you display .csv file
     public void loadTransaction(String fileName){
@@ -116,13 +114,8 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
-    public Transaction findTransaction(String description){
-        return transaction.stream()
-                .filter(t -> t.getDescription().equalsIgnoreCase(description.trim()))
-                .findFirst()
-                .orElse(null);
+    public List<Transaction> getTransactions() {
+        return transaction;
     }
-
-
 }
 

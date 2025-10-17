@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
 
 public class Ledger {
@@ -16,7 +16,8 @@ public class Ledger {
         boolean inLedger = true;
 
         while (inLedger) {
-            System.out.println("\n Welcome to your Ledger!");
+            System.out.println(TransactionFormatter.SUNFLOWER_YELLOW + "\n Welcome to your Ledger!"
+                    + TransactionFormatter.RESET);
             System.out.println("1. View all Transactions");
             System.out.println("2. View all Deposited Transactions");
             System.out.println("3. View all Debited Transactions");
@@ -37,7 +38,8 @@ public class Ledger {
                 case 3: //display all debited transactions only
                     list.displayDebits();
                     break;
-                case 4: // customized search
+                case 4: // new menu for customized search
+                    Report.showReport(list);
                     break;
                 case 5: //back to home
                     inLedger = false;

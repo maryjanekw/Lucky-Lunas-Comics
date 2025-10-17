@@ -13,8 +13,8 @@ public class Home {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n Welcome to your Finance Tracker!");
-            System.out.println("----Home----");
+            System.out.println( "\n Welcome to your Finance Tracker!");
+            System.out.println(TransactionFormatter.SUNFLOWER_YELLOW + "----Home----" + TransactionFormatter.RESET);
             System.out.println("1. Add Deposit");
             System.out.println("2. Debited Transactions");
             System.out.println("3. Ledger");
