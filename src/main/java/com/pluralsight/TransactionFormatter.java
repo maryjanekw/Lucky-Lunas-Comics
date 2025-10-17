@@ -11,10 +11,12 @@ public class TransactionFormatter {
 
     //transaction header
     public static void printHeader(){
-        System.out.println(CYAN + "======================================================================" + RESET);
+        System.out.println(CYAN + "=================================================================================" +
+                "========" + RESET);
         System.out.printf("%-12s %-10s %-35s %-20s %-10s%n",
                 "Date","Time","Description","Vendor","Total");
-        System.out.println(CYAN + "======================================================================" + RESET);
+        System.out.println(CYAN + "=================================================================================" +
+                "========" + RESET);
     }
 
     //transaction outline
@@ -33,6 +35,7 @@ public class TransactionFormatter {
     }
 
     public static void printFooter() {
-        System.out.println(CYAN + "======================================================================" + RESET);
+        System.out.println(CYAN + "=================================================================================" +
+                "========" + RESET);
     }
 }
