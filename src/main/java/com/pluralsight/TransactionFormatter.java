@@ -17,7 +17,7 @@ public class TransactionFormatter {
     public static void printHeader(){
         System.out.println(CYAN + "=================================================================================" +
                 "========" + RESET);
-        System.out.printf("%-12s %-10s %-35s %-20s %-15s%n",
+        System.out.printf("%-12s %-10s %-40s %-20s %-15s%n",
                 "Date","Time","Description","Vendor","Total");
         System.out.println(CYAN + "=================================================================================" +
                 "========" + RESET);
@@ -32,7 +32,7 @@ public class TransactionFormatter {
         }else if (totalText.startsWith("-$")){
             color = RED;
         }
-        System.out.printf("%-12s %-10s %-35s %-20s" + color + " %-15s" + RESET + "%n",
+        System.out.printf("%-12s %-10s %-40s %-20s" + color + " %-15s" + RESET + "%n",
                 t.getDate(), t.getTime(), t.getDescription(),
                 t.getVendor(),totalText);
     }

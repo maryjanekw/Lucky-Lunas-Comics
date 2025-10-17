@@ -251,14 +251,14 @@ public class TransactionSearch {
 
         List<Transaction> transactions = list.getTransactions();
 
-        TransactionFormatter.printHeader();
         // Customized filter
         List<Transaction> filtered = new ArrayList<>();
         for (Transaction t : transactions) {
             String tType = t.getTypeAndTotal().trim();
-            if (type.equalsIgnoreCase("deposit") && tType.equals("$")) {
+
+            if (type.equalsIgnoreCase("deposit") && tType.startsWith("$")) {
                 filtered.add(t);
-            } else if (type.equalsIgnoreCase("debit") && tType.equals("-$")) {
+            } else if (type.equalsIgnoreCase("debit") && tType.startsWith("-$")) {
                 filtered.add(t);
             } else if (type.equalsIgnoreCase("all")) {
                 filtered.add(t);
