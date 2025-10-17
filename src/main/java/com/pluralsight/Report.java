@@ -10,7 +10,7 @@ public class Report {
         boolean inReport = true;
 
         while (inReport){
-            System.out.println("\n Welcome to you Repot!");
+            System.out.println("\n Welcome to you Report!");
             System.out.println("Choose your custom search.");
             System.out.println("1. Month to Date");
             System.out.println("2. Previous Month");
@@ -28,12 +28,16 @@ public class Report {
 
             switch (choice) {
                 case 1: // search month to date
+                    TransactionSearch.findMonthToDate(list);
                     break;
                 case 2: // search previous month
+                    TransactionSearch.findPreviousMonth(list);
                     break;
                 case 3: //search year to date
+                    TransactionSearch.findYearToDate(list);
                     break;
                 case 4: //search previous year
+                    TransactionSearch.findYearToDate(list);
                     break;
                 case 5: // search by date
                     TransactionSearch.findDate(list);
