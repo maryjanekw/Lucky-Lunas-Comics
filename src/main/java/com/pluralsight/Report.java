@@ -40,7 +40,7 @@ public class Report {
                     TransactionSearch.findYearToDate(list);
                     break;
                 case 4: // Search Previous Year
-                    TransactionSearch.findYearToDate(list);
+                    TransactionSearch.findPreviousYear(list);
                     break;
                 case 5: // Search by Date
                     TransactionSearch.findDate(list);
