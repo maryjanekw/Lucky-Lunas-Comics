@@ -10,7 +10,7 @@ public class Ledger {
     public static void showLedger() {
         Scanner read = new Scanner(System.in);
         TransactionList list = new TransactionList();
-//        list.loadTransaction("transactions.csv");
+
 
         boolean inLedger = true;
 

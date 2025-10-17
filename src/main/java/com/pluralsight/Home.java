@@ -9,7 +9,6 @@ public class Home {
     public static void showHome() {
         Scanner read = new Scanner(System.in);
         TransactionList list = new TransactionList();
-//        list.loadTransaction("transactions.csv");
 
         boolean running = true;
 
@@ -44,6 +43,7 @@ public class Home {
             }
         }
     }
+
 
     private static void addDeposit(TransactionList list, Scanner read) {
         System.out.println("Enter your transaction.");

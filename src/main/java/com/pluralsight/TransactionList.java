@@ -13,8 +13,7 @@ public class TransactionList {
     private List<Transaction> newTransaction = new ArrayList<>();
 
     public void loadTransaction(String fileName){
-//        transaction.clear();
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+//        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
