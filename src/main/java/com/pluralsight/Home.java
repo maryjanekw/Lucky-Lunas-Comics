@@ -26,16 +26,16 @@ public class Home {
             read.nextLine();
 
             switch (choice) {
-                case 1: //add Customer Transaction
+                case 1: // Add Deposited Transaction
                     addDeposit(list, read);
                     break;
-                case 2: //add transactions using store money
+                case 2: // Add  Debited Transactions
                     addDebitedTransactions(list, read);
                     break;
-                case 3: //go to the ledger
+                case 3: // Go to Ledger
                     Ledger.showLedger();
                     break;
-                case 4: //exit
+                case 4: // Exit Application
                     System.out.println(" Goodbye!");
                     running = false;
                     break;
@@ -46,6 +46,7 @@ public class Home {
     }
 
 
+    // Customer input Add Deposit
     private static void addDeposit(TransactionList list, Scanner read) {
         System.out.println("Enter your transaction.");
         LocalDate date = LocalDate.now();
@@ -62,6 +63,7 @@ public class Home {
         list.saveTransaction("transactions.csv");
     }
 
+    // Customer input Add Debit
     private static void addDebitedTransactions(TransactionList list, Scanner read){
         System.out.println("Enter your transaction.");
         LocalDate date = LocalDate.now();

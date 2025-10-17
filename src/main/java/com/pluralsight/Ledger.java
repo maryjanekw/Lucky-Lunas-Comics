@@ -30,19 +30,19 @@ public class Ledger {
             read.nextLine();
 
             switch (choice) {
-                case 1: //display all transactions
+                case 1: // Display all Transactions
                     list.displayAll();
                     break;
-                case 2: //display deposited transactions only
+                case 2: // Display Deposited Transactions only
                     list.displayDeposits();
                     break;
-                case 3: //display all debited transactions only
+                case 3: // Display all Debited Transactions only
                     list.displayDebits();
                     break;
-                case 4: // new menu for customized search
+                case 4: // New Menu for Customized Search
                     Report.showReport(list);
                     break;
-                case 5: //back to home
+                case 5: // Back to Home
                     inLedger = false;
                     break;
                 default:

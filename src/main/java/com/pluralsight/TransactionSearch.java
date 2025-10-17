@@ -120,16 +120,26 @@ public class TransactionSearch {
 
         System.out.println("Enter the total you would like to find: ");
         String input = read.nextLine().trim();
-//        System.out.println("Is this a search for Deposit, Debit, or All?: ");
-//        String type = read.nextLine();
+        System.out.println("Is this a search for Deposit, Debit, or All?: ");
+        String type = read.nextLine().trim();
 
         try {
             BigDecimal target = parseAmountInput(input);
             boolean found = false;
 
+            // Customized filter
+            if (type.equalsIgnoreCase("deposit")) {
+                list.displayDeposits();
+            } else if (type.equalsIgnoreCase("debit")) {
+                list.displayDebits();
+            }else{
+                list.displayAll();
+            }
+
             TransactionFormatter.printHeader();
             for (Transaction t : list.getTransactions()) {
-                if(bd(t).compareTo(target) == 0){
+                BigDecimal amt = bd(t);
+                if(amt.compareTo(target) == 0){
                     TransactionFormatter.printRow(t);
                     found = true;
                 }
@@ -144,15 +154,14 @@ public class TransactionSearch {
 
     // Search Total by Range
     public static void findByRange(TransactionList list) {
-        Scanner sc = new Scanner(System.in);
+        Scanner read = new Scanner(System.in);
 
         System.out.print("Enter first amount: ");
-        String firstRaw = sc.nextLine().trim();
+        String firstRaw = read.nextLine().trim();
         System.out.print("Enter second amount: ");
-        String secondRaw = sc.nextLine().trim();
-//        System.out.println("How would you like to sort the totals? (Max -> Min or Min -> Max)");
-//        System.out.println("Enter Min or Max: ");
-//        String input = read.nextLine().trim();
+        String secondRaw = read.nextLine().trim();
+        System.out.println("Is this a search for Deposit, Debit, or All?: ");
+        String type = read.nextLine().trim();
 
         try {
             BigDecimal first = parseAmountInput(firstRaw);
@@ -163,6 +172,16 @@ public class TransactionSearch {
             BigDecimal max = first.max(second);
 
             boolean found = false;
+
+            // Customized filter
+            if (type.equalsIgnoreCase("deposit")) {
+                list.displayDeposits();
+            } else if (type.equalsIgnoreCase("debit")) {
+                list.displayDebits();
+            }else{
+                list.displayAll();
+            }
+
             TransactionFormatter.printHeader();
             for (Transaction t : list.getTransactions()) {
                 BigDecimal amt = bd(t);
@@ -197,7 +216,37 @@ public class TransactionSearch {
 
     // Search by Keywords
     public static void findKeyword(TransactionList list){
+        Scanner read = new Scanner(System.in);
 
-    }
+        System.out.println("Enter a Keyword to search: ");
+        String keyword = read.nextLine().trim().toLowerCase();
+        System.out.println("Is this a search for Deposit, Debit, or All?: ");
+        String type = read.nextLine().trim();
 
+        boolean found = false;
+
+        TransactionFormatter.printHeader();
+            for (Transaction t : list.getTransactions()){
+                // Customized filter
+                if (type.equalsIgnoreCase("deposit")) {
+                    list.displayDeposits();
+                } else if (type.equalsIgnoreCase("debit")) {
+                    list.displayDebits();
+                } else {
+                    list.displayAll();
+                }
+
+                // Matching keyword in description or vendor
+                String description = t.getDescription().toLowerCase();
+                String vendor = t.getVendor().toLowerCase();
+
+                if (description.contains(keyword) || vendor.contains(keyword)) {
+                    TransactionFormatter.printRow(t);
+                    found = true;
+                }
+            }
+            if (!found){
+                System.out.println("No transaction found containing keyword: " + keyword);
+            }
+        }
 }

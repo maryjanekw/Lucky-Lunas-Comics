@@ -10,7 +10,7 @@ public class TransactionList {
     public List<Transaction> newTransaction = new ArrayList<>();
 
 
-    //lets you display .csv file
+    // Lets you display .csv file
     public void loadTransaction(String fileName){
         try(BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -41,6 +41,7 @@ public class TransactionList {
         }
     }
 
+    // Add Deposit to .csv file
     public void addDeposit(LocalDate date, LocalTime time, String description, String vendor,
                            String typeAndTotal, double total){
         Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
@@ -49,6 +50,7 @@ public class TransactionList {
         System.out.println("Transaction added: " + t);
     }
 
+    // Add Debit to .cvs file
     public void addDebitedTransaction(LocalDate date, LocalTime time, String description, String vendor,
                                       String typeAndTotal, double total) {
         Transaction t = new Transaction(date, time, description, vendor, typeAndTotal, total);
@@ -57,7 +59,7 @@ public class TransactionList {
         System.out.println("Transaction added: " + t);
     }
 
-    // save to .csv file
+    // Save to .csv file
     public void saveTransaction(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
             for (Transaction t : newTransaction) {
@@ -71,7 +73,7 @@ public class TransactionList {
         }
     }
 
-    //display functions
+    // Display all transactions
     public void displayAll() {
         if (transaction.isEmpty()) {
             System.out.println("No transactions found.");
@@ -84,6 +86,7 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
+    // Display Deposit only
     public void displayDeposits() {
         List<Transaction> deposits = transaction.stream()
                 .filter(t -> t.getTypeAndTotal().startsWith("$")) // deposit String type = "$"
@@ -99,6 +102,7 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
+    // Display Debit only
     public void displayDebits(){
         List<Transaction> debits = transaction.stream()
                 .filter(t -> t.getTypeAndTotal().startsWith("-$")) // debit String type = "-$"
@@ -114,6 +118,7 @@ public class TransactionList {
         TransactionFormatter.printFooter();
     }
 
+    // Needed to connect TransactionSearch.java
     public List<Transaction> getTransactions() {
         return transaction;
     }

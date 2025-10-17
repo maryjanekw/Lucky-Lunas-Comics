@@ -30,33 +30,34 @@ public class Report {
             read.nextLine();
 
             switch (choice) {
-                case 1: // search month to date
+                case 1: // Search Month-to-Date
                     TransactionSearch.findMonthToDate(list);
                     break;
-                case 2: // search previous month
+                case 2: // Search Previous Month
                     TransactionSearch.findPreviousMonth(list);
                     break;
-                case 3: //search year to date
+                case 3: // Search Year-to-Date
                     TransactionSearch.findYearToDate(list);
                     break;
-                case 4: //search previous year
+                case 4: // Search Previous Year
                     TransactionSearch.findYearToDate(list);
                     break;
-                case 5: // search by date
+                case 5: // Search by Date
                     TransactionSearch.findDate(list);
                     break;
-                case 6: // search by vendor
+                case 6: // Search by Vendor
                     TransactionSearch.findVendor(list);
                     break;
-                case 7: // search by exact total
+                case 7: // Search by Exact Total
                     TransactionSearch.findExactTotal(list);
                     break;
-                case 8: // search by total range
+                case 8: // Search by Total Range
                     TransactionSearch.findByRange(list);
                     break;
-                case 9: // search by keyword
+                case 9: // Search by Keyword
+                    TransactionSearch.findKeyword(list);
                     break;
-                case 10: //back to ledger
+                case 10: // Back to Ledger
                     inReport = false;
                     break;
                 default:
