@@ -59,6 +59,8 @@ public class TransactionSearch {
                 found = true;
             }
         }
+        TransactionFormatter.printFooter();
+
         if(!found){
             System.out.println("No transaction found with in this date range.");
         }
@@ -83,6 +85,8 @@ public class TransactionSearch {
                     found = true;
                 }
             }
+            TransactionFormatter.printFooter();
+
             if (!found) {
                 System.out.println("No transactions found for " + searchDate);
             }
@@ -109,6 +113,8 @@ public class TransactionSearch {
                 found = true;
             }
         }
+        TransactionFormatter.printFooter();
+
         if (!found) {
             System.out.println("Vendor not found: " + vendorInput);
         }
@@ -144,6 +150,8 @@ public class TransactionSearch {
                     found = true;
                 }
             }
+            TransactionFormatter.printFooter();
+
         if (!found) {
             System.out.println("No transaction found for: " + target);
         }
@@ -190,6 +198,8 @@ public class TransactionSearch {
                     found = true;
                 }
             }
+            TransactionFormatter.printFooter();
+
             if (!found) {
                 System.out.println("No transactions found between " + min + " and " + max);
             }
@@ -245,6 +255,8 @@ public class TransactionSearch {
                     found = true;
                 }
             }
+            TransactionFormatter.printFooter();
+
             if (!found){
                 System.out.println("No transaction found containing keyword: " + keyword);
             }
