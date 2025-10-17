@@ -10,7 +10,9 @@ public class Report {
         boolean inReport = true;
 
         while (inReport){
-            System.out.println("\n Welcome to you Report!");
+            System.out.println(TransactionFormatter.ORCHID + "Welcome to you Report!"
+                    + TransactionFormatter.RESET);
+            System.out.println(TransactionFormatter.SUNFLOWER_YELLOW + "----Report----" + TransactionFormatter.RESET);
             System.out.println("Choose your custom search.");
             System.out.println("1. Month-to-Date");
             System.out.println("2. Previous Month");

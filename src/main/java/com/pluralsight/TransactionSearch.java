@@ -49,7 +49,7 @@ public class TransactionSearch {
         List<Transaction> transactions = list.getTransactions();
         boolean found = false;
 
-        System.out.println("\n====" + title + "====");
+        System.out.println(TransactionFormatter.ROSE_PINK + "\n====" + title + "====" + TransactionFormatter.RESET);
         TransactionFormatter.printHeader();
 
         for(Transaction t: transactions){

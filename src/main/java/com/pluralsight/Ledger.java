@@ -16,8 +16,9 @@ public class Ledger {
         boolean inLedger = true;
 
         while (inLedger) {
-            System.out.println(TransactionFormatter.SUNFLOWER_YELLOW + "\n Welcome to your Ledger!"
+            System.out.println(TransactionFormatter.ORCHID + "\n Welcome to your Ledger!"
                     + TransactionFormatter.RESET);
+            System.out.println(TransactionFormatter.SUNFLOWER_YELLOW + "----Ledger----" + TransactionFormatter.RESET);
             System.out.println("1. View all Transactions");
             System.out.println("2. View all Deposited Transactions");
             System.out.println("3. View all Debited Transactions");
