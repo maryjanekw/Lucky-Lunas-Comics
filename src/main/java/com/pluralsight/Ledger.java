@@ -48,6 +48,10 @@ public class Ledger {
                 default:
                     System.out.println("Invalid choice. Try again.");
             }
+            if (inLedger) {
+                System.out.println("\nPress ENTER to return to menu...");
+                read.nextLine();
+            }
         }
     }
 }

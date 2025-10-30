@@ -42,6 +42,10 @@ public class Home {
                 default:
                     System.out.println("Invalid choice. Try again.");
             }
+            if (running) {
+                System.out.println("\nPress ENTER to return to menu...");
+                read.nextLine();
+            }
         }
     }
 

@@ -25,11 +25,11 @@ public class Transaction {
         this.total = total;
     }
 
-    public Transaction(String s, String s1, String s2, String s3, double v) {
-    }
+//    public Transaction(String s, String s1, String s2, String s3, double v) {
+//    }
 
-    public Transaction(String s, String s1, String s2, String s3, String s4) {
-    }
+//    public Transaction(String s, String s1, String s2, String s3, String s4) {
+//    }
 
     //getters
     public LocalDate getDate() {
